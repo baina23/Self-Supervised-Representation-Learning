@@ -80,13 +80,14 @@ class NetworkInNetwork(nn.Module):
     	# By default return the features of the last layer / module.
     	out_feat_keys = [self.all_feat_names[-1],] if out_feat_keys is None else out_feat_keys
 
-        if len(out_feat_keys) == 0:
+    	if len(out_feat_keys) == 0:
     		raise ValueError('Empty list of output feature keys.')
-        for f, key in enumerate(out_feat_keys):
+    	for f, key in enumerate(out_feat_keys):
     		if key not in self.all_feat_names:
     			raise ValueError('Feature with name {0} does not exist. Existing features: {1}.'.format(key, self.all_feat_names))
     		elif key in out_feat_keys[:f]:
     			raise ValueError('Duplicate output feature key: {0}.'.format(key))
+
 
     	# Find the highest output feature in `out_feat_keys
     	max_out_feat = max([self.all_feat_names.index(key) for key in out_feat_keys])
@@ -118,7 +119,8 @@ class NetworkInNetwork(nn.Module):
     		if key in out_feat_keys:
     			out_feats[out_feat_keys.index(key)] = feat
 
-        out_feats = out_feats[0] if len(out_feats)==1 else out_feats
+    	out_feats = out_feats[0] if len(out_feats)==1 else out_feats
+
     	return out_feats
 
 
