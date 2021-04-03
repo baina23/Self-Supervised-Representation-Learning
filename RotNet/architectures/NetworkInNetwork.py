@@ -6,7 +6,7 @@ import torch.nn.functional as F
 class BasicBlock(nn.Module):
     def __init__(self, in_planes, out_planes, kernel_size):
         super(BasicBlock, self).__init__()
-        padding = (kernel_size-1)/2
+        padding = (kernel_size-1)//2
         self.layers = nn.Sequential()
         self.layers.add_module('Conv', nn.Conv2d(in_planes, out_planes, \
             kernel_size=kernel_size, stride=1, padding=padding, bias=False))
