@@ -25,7 +25,7 @@ class Classifier(nn.Module):
             self.classifier.add_module('MaxPool', nn.AdaptiveMaxPool2d((pool_size, pool_size)))
         elif pool_type == 'avg':
             self.classifier.add_module('AvgPool', nn.AdaptiveAvgPool2d((pool_size, pool_size)))
-	self.classifier.add_module('BatchNorm', nn.BatchNorm2d(nChannels, affine=False))
+        self.classifier.add_module('BatchNorm', nn.BatchNorm2d(nChannels, affine=False))
         self.classifier.add_module('Flatten', Flatten())
         self.classifier.add_module('LiniearClassifier', nn.Linear(nChannelsAll, num_classes))
         self.initilize()

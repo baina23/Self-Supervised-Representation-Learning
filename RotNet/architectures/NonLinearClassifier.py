@@ -7,7 +7,7 @@ import numpy as np
 class BasicBlock(nn.Module):
     def __init__(self, in_planes, out_planes, kernel_size, stride=1):
         super(BasicBlock, self).__init__()
-        padding = (kernel_size-1)/2
+        padding = (kernel_size-1)//2
         self.layers = nn.Sequential()
         self.layers.add_module('Conv', nn.Conv2d(in_planes, out_planes, \
             kernel_size=kernel_size, stride=stride, padding=padding, bias=False))
@@ -36,20 +36,20 @@ class Flatten(nn.Module):
 class Classifier(nn.Module):
     def __init__(self, opt):
         super(Classifier, self).__init__()
-        nChannels      = opt['nChannels']
-        num_classes    = opt['num_classes']
+        nChannels      = opt['nChannels'] #192*8*8
+        num_classes    = opt['num_classes'] #10
         self.cls_type  = opt['cls_type']
 
         self.classifier = nn.Sequential()
 
-	if self.cls_type == 'MultLayer':
-            nFeats = min(num_classes*20, 2048)
+        if self.cls_type == 'MultLayer':
+            nFeats = min(num_classes*20, 2048) #200
             self.classifier.add_module('Flatten',     Flatten())
             self.classifier.add_module('Liniear_1',   nn.Linear(nChannels, nFeats, bias=False))
-            self.classifier.add_module('BatchNorm_1', nn.BatchNorm2d(nFeats))
+            self.classifier.add_module('BatchNorm_1', nn.BatchNorm1d(nFeats))
             self.classifier.add_module('ReLU_1',      nn.ReLU(inplace=True))
             self.classifier.add_module('Liniear_2',   nn.Linear(nFeats, nFeats, bias=False))
-            self.classifier.add_module('BatchNorm2d', nn.BatchNorm2d(nFeats))
+            self.classifier.add_module('BatchNorm2d', nn.BatchNorm1d(nFeats))
             self.classifier.add_module('ReLU_2',      nn.ReLU(inplace=True))
             self.classifier.add_module('Liniear_F',   nn.Linear(nFeats, num_classes))
         elif self.cls_type == 'NIN_ConvBlock3':

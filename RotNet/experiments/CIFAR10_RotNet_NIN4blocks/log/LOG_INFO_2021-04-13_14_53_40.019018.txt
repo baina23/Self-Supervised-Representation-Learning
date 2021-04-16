@@ -1,0 +1,17 @@
+2021-04-13 14:53:40,019 - algorithms.Algorithm - INFO   - Algorithm options {'data_train_opt': {'batch_size': 128, 'unsupervised': True, 'epoch_size': None, 'random_sized_crop': False, 'dataset_name': 'cifar10', 'split': 'train'}, 'data_test_opt': {'batch_size': 128, 'unsupervised': True, 'epoch_size': None, 'random_sized_crop': False, 'dataset_name': 'cifar10', 'split': 'test'}, 'max_num_epochs': 200, 'networks': {'model': {'def_file': 'architectures/NetworkInNetwork.py', 'pretrained': None, 'opt': {'num_classes': 4, 'num_stages': 4, 'use_avg_on_conv3': False}, 'optim_params': {'optim_type': 'sgd', 'lr': 0.1, 'momentum': 0.9, 'weight_decay': 0.0005, 'nesterov': True, 'LUT_lr': [(60, 0.1), (120, 0.02), (160, 0.004), (200, 0.0008)]}}}, 'criterions': {'loss': {'ctype': 'CrossEntropyLoss', 'opt': None}}, 'algorithm_type': 'ClassificationModel', 'exp_dir': './experiments/CIFAR10_RotNet_NIN4blocks', 'disp_step': 50}
+2021-04-13 14:53:40,021 - algorithms.Algorithm - INFO   - Set network model
+2021-04-13 14:53:40,024 - algorithms.Algorithm - INFO   - ==> Initiliaze network model from file architectures/NetworkInNetwork.py with opts: {'num_classes': 4, 'num_stages': 4, 'use_avg_on_conv3': False}
+2021-04-13 14:53:40,048 - algorithms.Algorithm - INFO   - Initialize criterion[loss]: CrossEntropyLoss with options: None
+2021-04-13 14:53:41,988 - algorithms.Algorithm - INFO   - Initialize optimizer: sgd with params: {'optim_type': 'sgd', 'lr': 0.1, 'momentum': 0.9, 'weight_decay': 0.0005, 'nesterov': True, 'LUT_lr': [(60, 0.1), (120, 0.02), (160, 0.004), (200, 0.0008)]} for netwotk: model
+2021-04-13 14:53:41,990 - algorithms.Algorithm - INFO   - Training epoch [  1 / 200]
+2021-04-13 14:53:41,995 - algorithms.Algorithm - INFO   - ==> Set to model optimizer lr = 0.1000000000
+2021-04-13 14:53:42,002 - algorithms.Algorithm - INFO   - Training: CIFAR10_RotNet_NIN4blocks
+2021-04-13 14:53:50,218 - algorithms.Algorithm - INFO   - ==> Iteration [  1][  50 / len(data_loader)]: {'prec1': 50.1992, 'loss': 1.1231, 'load_time': 49.4869, 'process_time': 50.5131}
+2021-04-13 14:53:57,785 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 100 / len(data_loader)]: {'prec1': 54.1602, 'loss': 1.0533, 'load_time': 50.6969, 'process_time': 49.3031}
+2021-04-13 14:54:05,346 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 150 / len(data_loader)]: {'prec1': 56.5026, 'loss': 1.0126, 'load_time': 50.9594, 'process_time': 49.0406}
+2021-04-13 14:54:12,869 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 200 / len(data_loader)]: {'prec1': 58.4502, 'loss': 0.974, 'load_time': 51.3556, 'process_time': 48.6444}
+2021-04-13 14:54:20,437 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 250 / len(data_loader)]: {'prec1': 60.1656, 'loss': 0.9423, 'load_time': 51.3718, 'process_time': 48.6282}
+2021-04-13 14:54:27,998 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 300 / len(data_loader)]: {'prec1': 61.5885, 'loss': 0.9131, 'load_time': 51.1404, 'process_time': 48.8596}
+2021-04-13 14:54:35,585 - algorithms.Algorithm - INFO   - ==> Iteration [  1][ 350 / len(data_loader)]: {'prec1': 62.8298, 'loss': 0.8893, 'load_time': 51.138, 'process_time': 48.862}
+2021-04-13 14:54:41,783 - algorithms.Algorithm - INFO   - ==> Training stats: {'prec1': 63.6612, 'loss': 0.8734, 'load_time': 51.392, 'process_time': 48.608}
+2021-04-13 14:54:41,809 - algorithms.Algorithm - INFO   - Evaluating: CIFAR10_RotNet_NIN4blocks

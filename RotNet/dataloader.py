@@ -167,8 +167,8 @@ class GenericDataset(data.Dataset):
         print('num_imgs_per_category {0}'.format(num_imgs_per_cat))
    
         if self.dataset_name=='cifar10':
-            labels = self.data.test_labels if (self.split=='test') else self.data.train_labels
-            data = self.data.test_data if (self.split=='test') else self.data.train_data
+            labels = self.data.test_labels if (self.split=='test') else self.data.targets
+            data = self.data.test_data if (self.split=='test') else self.data.data
             label2ind = buildLabelIndex(labels)
             all_indices = []
             for cat in label2ind.keys():
@@ -181,8 +181,8 @@ class GenericDataset(data.Dataset):
                 self.data.test_labels = labels
                 self.data.test_data = data
             else: 
-                self.data.train_labels = labels
-                self.data.train_data = data
+                self.data.targets = labels
+                self.data.data = data
 
             label2ind = buildLabelIndex(labels)
             for k, v in label2ind.items(): 
@@ -217,11 +217,11 @@ def rotate_img(img, rot):
     if rot == 0: # 0 degrees rotation
         return img
     elif rot == 90: # 90 degrees rotation
-        return np.flipud(np.transpose(img, (1,0,2)))
+        return np.flipud(np.transpose(img, (1,0,2))).copy()
     elif rot == 180: # 90 degrees rotation
-        return np.fliplr(np.flipud(img))
+        return np.fliplr(np.flipud(img)).copy()
     elif rot == 270: # 270 degrees rotation / or -90
-        return np.transpose(np.flipud(img), (1,0,2))
+        return np.transpose(np.flipud(img), (1,0,2)).copy()
     else:
         raise ValueError('rotation should be 0, 90, 180, or 270 degrees')
 
